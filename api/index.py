@@ -1,15 +1,13 @@
-from flask import Flask, jsonify, request
+from flask import Flask
+from werkzeug.wrappers import Request, Response
+from werkzeug.middleware.dispatcher import DispatcherMiddleware
 
 app = Flask(__name__)
 
-@app.route('/')
-def hello():
-    return jsonify(message="Hello from Flask on Vercel!")
+@app.route("/")
+def home():
+    return "✅ Hello from Flask on Vercel (via WSGI)!"
 
-# Required for Vercel
+# Vercel expects this WSGI-compatible handler
 def handler(environ, start_response):
-    from werkzeug.middleware.dispatcher import DispatcherMiddleware
-    from werkzeug.wrappers import Request, Response
-    return DispatcherMiddleware(lambda e, s: Response("Not Found", status=404), {
-        '/': app
-    })(environ, start_response)
+    return DispatcherMiddleware(app)(environ, start_response)
