@@ -1,13 +1,12 @@
 from flask import Flask
-from werkzeug.wrappers import Request, Response
-from werkzeug.middleware.dispatcher import DispatcherMiddleware
 
+# Create Flask app
 app = Flask(__name__)
 
 @app.route("/")
-def home():
-    return "✅ Hello from Flask on Vercel (via WSGI)!"
+def hello():
+    return "✅ Hello from Flask on Vercel!"
 
-# Vercel expects this WSGI-compatible handler
-def handler(environ, start_response):
-    return DispatcherMiddleware(app)(environ, start_response)
+# Vercel expects `app` to be the WSGI handler
+# So assign `app` as `handler`
+handler = app

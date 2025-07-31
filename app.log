@@ -4658,3 +4658,71 @@ jinja2.exceptions.TemplateNotFound: error.html
 2025-07-30T20:20:42 - __init__ - ERROR - Internal Server Error: 500 Internal Server Error: The server encountered an internal error and was unable to complete your request. Either the server is overloaded or there is an error in the application.
 2025-07-30T20:26:09 - __init__ - INFO - Master of Jokes program started.
 2025-07-30T20:26:09 - __init__ - INFO - Database initialized successfully.
+2025-07-31T00:06:44 - __init__ - INFO - Master of Jokes program started.
+2025-07-31T00:06:45 - __init__ - INFO - Database initialized successfully.
+2025-07-31T00:06:57 - __init__ - INFO - Session ID: c550bcef-6c51-4453-9222-a272e17b8495 - Request processed: GET /, Status Code: 302
+2025-07-31T00:06:57 - __init__ - WARNING - Session ID: c550bcef-6c51-4453-9222-a272e17b8495 - Non-200 HTTP response: 302
+2025-07-31T00:06:57 - __init__ - INFO - Session ID: 34bdd6aa-1dfd-422d-9d4f-c4558068917b - Request processed: GET /jokes, Status Code: 200
+2025-07-31T00:06:57 - __init__ - INFO - Session ID: d41865e1-bd0c-4c2e-bc90-071a11d434d8 - Request processed: GET /static/css/style.css, Status Code: 200
+2025-07-31T00:06:57 - __init__ - ERROR - Unexpected error: 404 Not Found: The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again.
+Traceback (most recent call last):
+  File "C:\Users\Vaishnavi\AppData\Roaming\Python\Python312\site-packages\flask\app.py", line 917, in full_dispatch_request
+    rv = self.dispatch_request()
+         ^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Vaishnavi\AppData\Roaming\Python\Python312\site-packages\flask\app.py", line 891, in dispatch_request
+    self.raise_routing_exception(req)
+  File "C:\Users\Vaishnavi\AppData\Roaming\Python\Python312\site-packages\flask\app.py", line 500, in raise_routing_exception
+    raise request.routing_exception  # type: ignore[misc]
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Vaishnavi\AppData\Roaming\Python\Python312\site-packages\flask\ctx.py", line 362, in match_request
+    result = self.url_adapter.match(return_rule=True)  # type: ignore
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Vaishnavi\AppData\Roaming\Python\Python312\site-packages\werkzeug\routing\map.py", line 629, in match
+    raise NotFound() from None
+werkzeug.exceptions.NotFound: 404 Not Found: The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again.
+2025-07-31T00:06:57 - __init__ - INFO - Session ID: b91ee2f9-7468-4b14-9f4d-73e687f56a36 - Request processed: GET /favicon.ico, Status Code: 500
+2025-07-31T00:06:57 - __init__ - WARNING - Session ID: b91ee2f9-7468-4b14-9f4d-73e687f56a36 - Non-200 HTTP response: 500
+2025-07-31T00:07:03 - __init__ - INFO - Session ID: 2824e2cd-9fba-4a7c-b558-6419f33e2ba6 - Request processed: GET /leave_joke, Status Code: 200
+2025-07-31T00:07:03 - __init__ - INFO - Session ID: 97b687c5-53ec-4284-97c3-ea53f2117c95 - Request processed: GET /static/css/style.css, Status Code: 304
+2025-07-31T00:07:03 - __init__ - WARNING - Session ID: 97b687c5-53ec-4284-97c3-ea53f2117c95 - Non-200 HTTP response: 304
+2025-07-31T00:07:03 - __init__ - ERROR - Unexpected error: 404 Not Found: The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again.
+Traceback (most recent call last):
+  File "C:\Users\Vaishnavi\AppData\Roaming\Python\Python312\site-packages\flask\app.py", line 917, in full_dispatch_request
+    rv = self.dispatch_request()
+         ^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Vaishnavi\AppData\Roaming\Python\Python312\site-packages\flask\app.py", line 891, in dispatch_request
+    self.raise_routing_exception(req)
+  File "C:\Users\Vaishnavi\AppData\Roaming\Python\Python312\site-packages\flask\app.py", line 500, in raise_routing_exception
+    raise request.routing_exception  # type: ignore[misc]
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Vaishnavi\AppData\Roaming\Python\Python312\site-packages\flask\ctx.py", line 362, in match_request
+    result = self.url_adapter.match(return_rule=True)  # type: ignore
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Vaishnavi\AppData\Roaming\Python\Python312\site-packages\werkzeug\routing\map.py", line 629, in match
+    raise NotFound() from None
+werkzeug.exceptions.NotFound: 404 Not Found: The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again.
+2025-07-31T00:07:03 - __init__ - INFO - Session ID: 38be2ae6-2374-40d4-bb0f-520324a22e87 - Request processed: GET /favicon.ico, Status Code: 500
+2025-07-31T00:07:03 - __init__ - WARNING - Session ID: 38be2ae6-2374-40d4-bb0f-520324a22e87 - Non-200 HTTP response: 500
+2025-07-31T00:07:18 - __init__ - INFO - Session ID: a3ded869-1d2d-48e9-822b-21a4e6614f0a - Request processed: POST /leave_joke, Status Code: 302
+2025-07-31T00:07:18 - __init__ - WARNING - Session ID: a3ded869-1d2d-48e9-822b-21a4e6614f0a - Non-200 HTTP response: 302
+2025-07-31T00:07:18 - __init__ - INFO - Session ID: 0623d1f4-11be-4414-b312-1a94baf80002 - Request processed: GET /jokes, Status Code: 200
+2025-07-31T00:07:18 - __init__ - INFO - Session ID: cfc7cb97-591e-4f43-a2d2-775e08d72793 - Request processed: GET /static/css/style.css, Status Code: 304
+2025-07-31T00:07:18 - __init__ - WARNING - Session ID: cfc7cb97-591e-4f43-a2d2-775e08d72793 - Non-200 HTTP response: 304
+2025-07-31T00:07:18 - __init__ - ERROR - Unexpected error: 404 Not Found: The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again.
+Traceback (most recent call last):
+  File "C:\Users\Vaishnavi\AppData\Roaming\Python\Python312\site-packages\flask\app.py", line 917, in full_dispatch_request
+    rv = self.dispatch_request()
+         ^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Vaishnavi\AppData\Roaming\Python\Python312\site-packages\flask\app.py", line 891, in dispatch_request
+    self.raise_routing_exception(req)
+  File "C:\Users\Vaishnavi\AppData\Roaming\Python\Python312\site-packages\flask\app.py", line 500, in raise_routing_exception
+    raise request.routing_exception  # type: ignore[misc]
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Vaishnavi\AppData\Roaming\Python\Python312\site-packages\flask\ctx.py", line 362, in match_request
+    result = self.url_adapter.match(return_rule=True)  # type: ignore
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Vaishnavi\AppData\Roaming\Python\Python312\site-packages\werkzeug\routing\map.py", line 629, in match
+    raise NotFound() from None
+werkzeug.exceptions.NotFound: 404 Not Found: The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again.
+2025-07-31T00:07:18 - __init__ - INFO - Session ID: edf5d4a4-e348-4a2a-a50e-206889bf52be - Request processed: GET /favicon.ico, Status Code: 500
+2025-07-31T00:07:18 - __init__ - WARNING - Session ID: edf5d4a4-e348-4a2a-a50e-206889bf52be - Non-200 HTTP response: 500
