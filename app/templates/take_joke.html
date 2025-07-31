@@ -1,0 +1,20 @@
+{% extends "base.html" %} {% block content %}
+<h1>Take a Joke</h1>
+
+<!-- Display List of Other Users' Jokes -->
+{% if jokes %}
+<ul class="list-group joke-list">
+    {% for joke in jokes %}
+    <li class="list-group-item joke-item">
+        <h3>{{ joke.title }}</h3>
+        <p><b>By: </b>{{ joke.author.nickname }}</p>
+        <p><b>Average Rating: </b>{{ "%.2f"|format(joke.average_rating()) }}</p>
+
+        <!-- View/Rate Link -->
+        <a href="{{ url_for('main.view_joke', joke_id=joke.id) }}" class="btn btn-info btn-sm">View/Rate</a>
+    </li>
+    {% endfor %}
+</ul>
+{% else %}
+<p>No other jokes available at this time.</p>
+{% endif %} {% endblock %}

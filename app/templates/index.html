@@ -1,0 +1,41 @@
+{% extends "base.html" %} {% block content %}
+<div class="row justify-content-center">
+    <div class="col-md-6">
+        <h1 class="text-center welcome-text mb-4">Welcome to Master of Jokes</h1>
+
+        {% if current_user.is_anonymous %}
+        <h2>Register</h2>
+        <form method="POST" action="{{ url_for('main.index') }}">
+            {{ form.hidden_tag() }}
+            <div class="mb-3">
+                <label for="email" class="form-label">Email</label> {{ form.email(class="form-control", id="email") }} {% for error in form.email.errors %}
+                <div class="invalid-feedback" style="display:block;">
+                    {{ error }}
+                </div>
+                {% endfor %}
+            </div>
+            <div class="mb-3">
+                <label for="nickname" class="form-label">Nickname</label> {{ form.nickname(class="form-control", id="nickname") }} {% for error in form.nickname.errors %}
+                <div class="invalid-feedback" style="display:block;">
+                    {{ error }}
+                </div>
+                {% endfor %}
+            </div>
+            <div class="mb-3">
+                <label for="password" class="form-label">Password</label> {{ form.password(class="form-control", id="password") }} {% for error in form.password.errors %}
+                <div class="invalid-feedback" style="display:block;">
+                    {{ error }}
+                </div>
+                {% endfor %}
+            </div>
+            {{ form.submit(class="btn btn-primary") }}
+        </form>
+        <p class="mt-3 text-center">
+            Already have an account? <a href="{{ url_for('main.login') }}">Sign In</a>
+        </p>
+        {% else %}
+        <p class="mt-3 text-center">Welcome back, {{ current_user.nickname }}!</p>
+        {% endif %}
+    </div>
+</div>
+{% endblock %}

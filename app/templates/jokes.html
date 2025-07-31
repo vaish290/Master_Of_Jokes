@@ -1,0 +1,56 @@
+{% extends "base.html" %} {% block content %}
+<h1>Welcome to Master of Jokes, {{ current_user.nickname }}!</h1>
+<p><b>Your joke balance: {{ current_user.joke_balance }}</b></p>
+
+<h2>My Jokes</h2>
+<a href="{{ url_for('main.leave_joke') }}" class="btn btn-primary mb-3">Leave a Joke</a> {% if user_jokes %}
+<ul class="list-group joke-list">
+    {% for joke in user_jokes %}
+    <li class="list-group-item joke-item">
+        <h3>{{ joke.title }}</h3>
+        <p>{{ joke.body }}</p>
+        <!-- Normal users can view/edit or delete their own jokes -->
+        <a href="{{ url_for('main.view_joke', joke_id=joke.id) }}" class="btn btn-info btn-sm">View/Edit</a>
+        <form action="{{ url_for('main.delete_joke', joke_id=joke.id) }}" method="POST" class="d-inline">
+            <input type="submit" value="Delete" class="btn btn-danger btn-sm" onclick="return confirm('Are you sure?');">
+        </form>
+    </li>
+    {% endfor %}
+</ul>
+{% else %}
+<p>You haven't created any jokes yet.</p>
+{% endif %}
+
+<h2>Other Jokes</h2>
+{% if other_jokes %}
+<ul class="list-group joke-list">
+    {% for joke in other_jokes %}
+    <li class="list-group-item joke-item">
+        <h3>{{ joke.title }}</h3>
+        <p><b>By:</b> {{ joke.author.nickname }}</p>
+
+        <!-- Check if created_at is not None before formatting -->
+        {% if joke.created_at %}
+        <p><b>Created on:</b> {{ joke.created_at.strftime('%Y-%m-%d %H:%M:%S') }}</p>
+        {% else %}
+        <p><b>Created on:</b> Not available</p>
+        {% endif %}
+
+        <p><b>Average Rating:</b> {{ "%.2f"|format(joke.average_rating()) }}</p>
+
+        {% if current_user.role != 'Moderator' %}
+        <a href="{{ url_for('main.view_joke', joke_id=joke.id) }}" class="btn btn-info btn-sm">View/Rate</a> {% endif %}
+
+        <!-- Moderators can edit or delete any joke -->
+        {% if current_user.role == 'Moderator' %}
+        <a href="{{ url_for('main.edit_joke', joke_id=joke.id) }}" class="btn btn-warning btn-sm">Edit</a>
+        <form action="{{ url_for('main.delete_joke', joke_id=joke.id) }}" method="POST" class="d-inline">
+            <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('Are you sure?');">Delete</button>
+        </form>
+        {% endif %}
+    </li>
+    {% endfor %}
+</ul>
+{% else %}
+<p>No other jokes available.</p>
+{% endif %} {% endblock %}

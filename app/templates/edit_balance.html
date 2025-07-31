@@ -1,0 +1,23 @@
+{% extends "base.html" %} {% block content %}
+<div class="container mt-5">
+    <h1>Edit User Balances</h1>
+
+    <form method="POST">
+        <div class="mb-3">
+            <label for="user_id" class="form-label">Select User</label>
+            <select name="user_id" id="user_id" class="form-control">
+                {% for user in users %}
+                <option value="{{ user.id }}">{{ user.nickname }} (Balance: {{ user.joke_balance }})</option>
+                {% endfor %}
+            </select>
+        </div>
+
+        <div class="mb-3">
+            <label for="new_balance" class="form-label">New Balance</label>
+            <input type="number" name="new_balance" id="new_balance" class="form-control" placeholder="Enter new balance">
+        </div>
+
+        <button type="submit" class="btn btn-primary">Update Balance</button>
+    </form>
+</div>
+{% endblock %}

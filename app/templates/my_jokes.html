@@ -1,0 +1,27 @@
+{% extends "base.html" %} {% block content %}
+<h1 class="mb-4">My Jokes</h1>
+
+<!-- Buttons for Leave a Joke and Take a Joke -->
+<a href="{{ url_for('main.leave_joke') }}" class="btn btn-primary mb-3 me-2 ">Leave a New Joke</a>
+<a href="{{ url_for('main.take_joke') }}" class="btn btn-secondary mb-3 {% if current_user.joke_balance == 0 %}disabled{% endif %}">
+   Take a Joke
+</a>
+
+<!-- Display List of User's Jokes -->
+{% if jokes %}
+<ul class="list-group joke-list">
+    {% for joke in jokes %}
+    <li class="list-group-item joke-item">
+        <div class="joke-header">
+            <h3>{{ joke.title }}</h3>
+            <p><strong>Average Rating:</strong> {{ "%.2f"|format(joke.average_rating()) }}</p>
+        </div>
+        <p>{{ joke.body }}</p>
+
+        <a href="{{ url_for('main.edit_joke', joke_id=joke.id) }}" class="btn btn-info btn-sm">Edit</a>
+    </li>
+    {% endfor %}
+</ul>
+{% else %}
+<p>You haven't created any jokes yet.</p>
+{% endif %} {% endblock %}

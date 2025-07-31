@@ -1,0 +1,16 @@
+{% extends "base.html" %} {% block content %}
+<div class="container mt-5">
+    <h1>Moderate Users</h1>
+
+    <form method="POST">
+        <select name="user_id" class="form-control">
+            {% for user in users %}
+                <option value="{{ user.id }}">{{ user.nickname }} ({{ user.role }})</option>
+            {% endfor %}
+        </select>
+
+        <button name="action" value="promote" class="btn btn-success mt-3">Promote to Moderator</button>
+        <button name="action" value="demote" class="btn btn-danger mt-3">Demote to User</button>
+    </form>
+</div>
+{% endblock %}

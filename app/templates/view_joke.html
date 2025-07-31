@@ -1,0 +1,34 @@
+{% extends "base.html" %} {% block content %}
+<h1>{{ joke.title }}</h1>
+<p><strong>By:</strong> {{ joke.author.nickname }}</p>
+<p><strong>Created on:</strong> {{ joke.created_at.strftime('%Y-%m-%d %H:%M:%S') }}</p>
+<p><strong>Average Rating:</strong> {{ "%.2f"|format(joke.average_rating()) }}</p>
+<p>{{ joke.body }}</p>
+
+<!-- If current user is the author, allow editing and deleting -->
+{% if can_edit %}
+<a href="{{ url_for('main.edit_joke', joke_id=joke.id) }}" class="btn btn-info">Edit Joke</a>
+
+<!-- Delete Form -->
+<form action="{{ url_for('main.delete_joke', joke_id=joke.id) }}" method="POST" class="d-inline">
+    <input type="submit" value="Delete" class="btn btn-danger" onclick="return confirm('Are you sure you want to delete this joke?');">
+</form>
+{% endif %}
+
+<!-- If current user is not the author, allow them to rate -->
+{% if can_rate %}
+<h2>Rate this Joke</h2>
+<form method="POST">
+    {{ form.hidden_tag() }}
+
+    <div class="mb-3">
+        {{ form.rating.label(class='form-label') }} {{ form.rating(class='form-control') }} {% for error in form.rating.errors %}
+        <div class='text-danger'>{{ error }}</div>
+        {% endfor %}
+    </div>
+
+    {{ form.submit(class='btn btn-primary') }}
+</form>
+{% endif %}
+
+<a href="{{ url_for('main.jokes') }}" class="btn btn-secondary mt-3">Back to Jokes</a> {% endblock %}

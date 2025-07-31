@@ -1,0 +1,21 @@
+{% extends "base.html" %} {% block content %}
+<h1>Leave a Joke</h1>
+<form method="POST">
+    {{ form.hidden_tag() }}
+    <div class="mb-3">
+        <label for="title" class="form-label">Title</label> {{ form.title(class="form-control", id="title") }} {% for error in form.title.errors %}
+        <div class="invalid-feedback" style="display:block;">
+            {{ error }}
+        </div>
+        {% endfor %}
+    </div>
+    <div class="mb-3">
+        <label for="body" class="form-label">Joke</label> {{ form.body(class="form-control", id="body", rows=4) }} {% for error in form.body.errors %}
+        <div class="invalid-feedback" style="display:block;">
+            {{ error }}
+        </div>
+        {% endfor %}
+    </div>
+    {{ form.submit(class="btn btn-primary") }}
+</form>
+{% endblock %}

@@ -1,0 +1,24 @@
+{% extends "base.html" %} {% block content %}
+<h1>Edit Your Joke</h1>
+
+<form method="POST">
+    {{ form.hidden_tag() }}
+
+    <!-- Title -->
+    <div class="mb-3">
+        <label for="title">Title (Cannot be changed)</label>
+        <input type="text" id="title" name="title" value="{{ joke.title }}" class="form-control" readonly>
+    </div>
+
+    <!-- Body-->
+    <div class="mb-3">
+        {{ form.body.label(class='form-label') }} {{ form.body(class='form-control', rows=4) }} {% for error in form.body.errors %}
+        <div class='text-danger'>{{ error }}</div>
+        {% endfor %}
+    </div>
+
+    <!-- Submit Button -->
+    {{ form.submit(class='btn btn-primary') }}
+</form>
+
+<a href="{{ url_for('main.my_jokes') }}" class="btn btn-secondary mt-3">Back to My Jokes</a> {% endblock %}
